@@ -1,21 +1,21 @@
 <html>
 <head>
     <script src="https://cdn.jsdelivr.net/vue/1.0.24/vue.js"></script>
+    <script src="example_data.js" charset="utf-8"></script>
     <script src="src.js" charset="utf-8"></script>
     <link rel="stylesheet" href="styles.css" title="CSS Title" type="text/css" media="screen" charset="utf-8">
 </head>
 <body>
 <div id="demo">
-    <h1>Latest Vue.js Commits on GitHub</h1>
-    <template v-for="branch in branches">
+    <h1>Campaigns</h1>
+    <template v-for="campaign in campaigns">
         <input type="radio"
-               name="branch"
-               :id="branch"
-               :value="branch"
-               v-model="currentBranch">
-        <label :for="branch">{{branch}}</label>
+               name="campaign"
+               :id="campaign.campaignId"
+               :value="campaign"
+               v-model="selection.campaign">
+        <label :for="campaign.campaignId">{{campaign.campaignId}}</label>
     </template>
-    <p>vuejs/vue@{{currentBranch}}</p>
     <ul>
         <li v-for="record in commits">
             <a :href="record.html_url" target="_blank" class="commit">{{record.sha.slice(0, 7)}}</a>

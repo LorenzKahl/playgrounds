@@ -1,18 +1,22 @@
 window.onload = function () {
     var apiURL = 'https://api.github.com/repos/vuejs/vue/commits?per_page=3&sha=';
+    var exampleId = '1';
 
     var demo = new Vue({
 
         el: '#demo',
 
         data: {
-            branches: ['master', 'dev'],
-            currentBranch: 'master',
-            commits: null
+            "pageId": exampleData[exampleId].pageId || '',
+            "campaignType": exampleData[exampleId].campaignType || '',
+            "campaigns": exampleData[exampleId].campaigns || '',
+            "gratifications": exampleData[exampleId].gratifications || '',
+            "productGroups": exampleData[exampleId].productGroups || '',
+            "selection": {}
         },
 
         created: function () {
-            this.fetchData()
+            // do something
         },
 
         watch: {
