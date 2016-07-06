@@ -1,0 +1,48 @@
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/vue/1.0.24/vue.js"></script>
+    <script src="src.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="styles.css" title="CSS Title" type="text/css" media="screen" charset="utf-8">
+</head>
+<body>
+
+<!-- outer template -->
+<script type="text/x-template" id="list-template">
+    <ul>
+        <item
+                class="item"
+                :model="treeData">
+        </item>
+    </ul>
+</script>
+
+<!-- item template -->
+<script type="text/x-template" id="item-template">
+    <li>
+        <div
+                :class="{bold: isFolder}"
+                @click="toggle"
+                @dblclick="changeType">
+            {{model.name}}
+            <span v-if="isFolder">[{{open ? '-' : '+'}}]</span>
+        </div>
+        <ul v-show="open" v-if="isFolder">
+            <item
+                    class="item"
+                    v-for="model in model.children"
+                    :model="model">
+            </item>
+            <li @click="addChild">+</li>
+        </ul>
+    </li>
+</script>
+
+<p>(You can double click on an item to turn it into a folder.)</p>
+
+<!-- the demo root element -->
+<div id="app">
+    Wusel
+</div>
+
+</body>
+</html>
